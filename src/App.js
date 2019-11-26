@@ -1,37 +1,23 @@
 import React, { Component } from 'react';
-import ClassComponent from './components'
-
 import './App.css';
 
-/** setState || useState
- * Simple counter class function
- * 
- * 
- * */ 
-
-/** Toggle light
- *  style={{ height: "50px", width: "50px" }}
- *  https://icon.now.sh/highlight/fd0
- *  https://icon.now.sh/highlight/aaa
- *  
- * */ 
-
 /**
- * componentDidMount || componentDidUpdate || useEffect
- * 
- *  useEffect [dependence array]
- *  no prorerty calls every time 
- *  empty array [] calls once
- *  with properties depend on property which will add in array
- *  
  * https://it-blog-posts.herokuapp.com/api/posts
- * */  
+ * https://5d8e0901370f02001405c7c9.mockapi.io/api/v1/postblog/customers
+* */  
+
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { }
+  }
+
+
   render() {
     return (
       <div>
-        <ClassComponent />
+        React State
       </div>
     );
   }
