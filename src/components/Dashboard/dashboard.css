@@ -1,0 +1,16 @@
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.create-todo {
+  width: 45%;
+}
+
+.show-todo {
+  width: 45%;
+}
