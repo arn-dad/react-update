@@ -18,33 +18,37 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { show: true, date: new Date(), update: false }
+    this.state = { 
+      show: true,
+      date: new Date(),
+      update: false 
+    }
   }
 
   componentDidMount() {
     // setTimeout(() => {
     //   this.setState({ update: true })
-    // }, 2500);
+    // }, 0);
 
-    // setTimeout(() => {
-    //   this.setState({show: false})
-    // }, 2500)
+    setTimeout(() => {
+      this.setState({show: false})
+    }, 3000)
 
-    // setInterval(() => {
-    //   this.setState({ date: new Date() })
-    // }, 1000)
+    setInterval(() => {
+      this.setState({ date: new Date() })
+    }, 1000)
   }
 
 
   render() {
-    const { date } = this.state;
+    const { date, update, show } = this.state;
 
     return (
       <div>
         <div className="clock">
           <Badge variant="info">{date.toLocaleTimeString()}</Badge>
         </div>
-        <Dashboard />
+        {show && <Dashboard update={update}/>}
       </div>
     );
   }

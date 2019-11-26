@@ -1,84 +1,82 @@
-import React, { PureComponent } from 'react';
+import React, { useState, useEffect } from 'react';
 // import isEqual from 'lodash/isEqual';
 import Form from './Form';
 import Table from './Table';
 
 import './dashboard.css';
 
-class Dashboard extends PureComponent {
-  constructor(props) {
-    super(props)
+// componentDidMount() {
+//   window.addEventListener('resize', this.onWindowResize)
+// }
+// static getDrerivedStateFromProps(props, state) {}
 
-    this.state = {
+// componentDidUpdate(prevProps, prevState) {}
+
+// componentWillUnmount() {
+//   console.log("#AR: Dashboard -> componentWillUnmount -> componentWillUnmount");
+//     window.removeEventListener('resize',  this.onWindowResize)
+//   }
+
+const Dashboard = () => {
+ const [state, setState ] = useState({
       todos    : [],
       hide     : false
-    };
-  }
+    });
 
-  componentDidMount() {
-    window.addEventListener('resize', this.onWindowResize)
-  }
-
-  onWindowResize = (event) => {
+    
+ const onWindowResize = (event) => {
     if(window.innerWidth < 500) {
-      this.setState({
+      setState({
+        ...state,
         hide: true
       })
     }
 
     if(window.innerWidth > 500) {
-      this.setState({
+       setState({
+        ...state,
         hide: false
       })
     }
     console.log("onWindowResize", window.innerWidth);
   }
 
-  static getDrerivedStateFromProps(props, state) {}
+  useEffect(() => {
+    window.addEventListener('resize', onWindowResize)
+    return () => {
+      window.removeEventListener('resize',  onWindowResize)
+    }
+  }, [])
 
-  componentDidUpdate(prevProps, prevState) {}
-  
-  componentWillUnmount() {
-  console.log("#AR: Dashboard -> componentWillUnmount -> componentWillUnmount");
-    window.removeEventListener('resize',  this.onWindowResize)
-  }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if(!isEqual(nextProps, this.props)) {
-  //     return true;
-  //   }
-  //   return false;
-  //  }
-  
-
-  onSubmit = (todo) => {
-    this.setState(({ todos }) => ({
-      todos: [...todos, todo]
+  const onSubmit = (todo) => {
+    setState(({ todos, hide }) => ({
+      todos: [...todos, todo],
+      hide
     }))
   }
 
-  onRemove = (todo) => {
-    this.setState(({ todos }) => ({
+  const onRemove = (todo) => {
+    setState(({ todos, hide }) => ({
+      hide,
       todos: todos.filter(td => td !== todo)
     }))
   }
   
-  render() {
-    const { todos, hide } = this.state;
+    const { todos, hide } = state;
     console.log('%c  RENDER DASHBOARD', 'background: green; color: white; display: block;')
     return (
       <div className="container dashboard">
         <div className="create-todo">
-          {!hide && <Form onSubmit={this.onSubmit}/>}
+          {!hide && <Form onSubmit={onSubmit}/>}
         </div>
 
         <div className="show-todo">
-          <Table todos={todos} onRemove={this.onRemove}/>
+          <Table todos={todos} onRemove={onRemove}/>
         </div>
         
       </div>
     );
-  }
 }
 
-export default Dashboard;
+export default React.memo(Dashboard);
