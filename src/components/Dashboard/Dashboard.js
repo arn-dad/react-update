@@ -1,27 +1,54 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+// import isEqual from 'lodash/isEqual';
 import Form from './Form';
 import Table from './Table';
 
 import './dashboard.css';
 
-class Dashboard extends Component {
+class Dashboard extends PureComponent {
   constructor(props) {
     super(props)
 
     this.state = {
-      todos    : []
+      todos    : [],
+      hide     : false
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    window.addEventListener('resize', this.onWindowResize)
+  }
+
+  onWindowResize = (event) => {
+    if(window.innerWidth < 500) {
+      this.setState({
+        hide: true
+      })
+    }
+
+    if(window.innerWidth > 500) {
+      this.setState({
+        hide: false
+      })
+    }
+    console.log("onWindowResize", window.innerWidth);
+  }
 
   static getDrerivedStateFromProps(props, state) {}
 
   componentDidUpdate(prevProps, prevState) {}
   
-  componentWillUnmount() {}
+  componentWillUnmount() {
+  console.log("#AR: Dashboard -> componentWillUnmount -> componentWillUnmount");
+    window.removeEventListener('resize',  this.onWindowResize)
+  }
 
-  // shouldComponentUpdate(nextProps, nextState) { }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if(!isEqual(nextProps, this.props)) {
+  //     return true;
+  //   }
+  //   return false;
+  //  }
   
 
   onSubmit = (todo) => {
@@ -37,12 +64,12 @@ class Dashboard extends Component {
   }
   
   render() {
-    const { todos } = this.state;
+    const { todos, hide } = this.state;
     console.log('%c  RENDER DASHBOARD', 'background: green; color: white; display: block;')
     return (
       <div className="container dashboard">
         <div className="create-todo">
-          <Form onSubmit={this.onSubmit}/>
+          {!hide && <Form onSubmit={this.onSubmit}/>}
         </div>
 
         <div className="show-todo">
