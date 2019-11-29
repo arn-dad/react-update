@@ -21,8 +21,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = { 
-      date   : new Date(),
-      update : false 
+      date     : new Date(),
+      loggedIn : false 
     }
   }
   onChangeView = () => {
@@ -40,8 +40,7 @@ class App extends Component {
   }
 
   render() {
-    const { date, update, show } = this.state;
-
+    const { date, show } = this.state;
     return (
       <div>
         <div className="clock">
