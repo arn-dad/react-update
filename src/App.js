@@ -33,7 +33,7 @@ class App extends Component {
 
     setTimeout(() => {
       this.setState({show: false})
-    }, 1000)
+    }, 3000)
 
     setInterval(() => {
       this.setState({ date: new Date() })
