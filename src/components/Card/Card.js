@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class Card extends Component {
   render() {
     const { model, last_name } = this.props.data;
-    console.log("#AR: Card -> render -> this.props", this.props);
     return (
       <div className="card" style={{ marginBottom: '5px' }}>
         <div className="card-body">
