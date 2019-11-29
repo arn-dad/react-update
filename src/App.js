@@ -3,6 +3,7 @@ import Cars from './components/Cars/Cars'
 import Company from './components/Company/Company';
 import { Badge, Button } from 'react-bootstrap';
 import { companysData, cars } from './store/store';
+import AppContext from './context/app-contex';
 import './App.css';
 
 /**
@@ -40,7 +41,8 @@ class App extends Component {
   }
 
   render() {
-    const { date, show } = this.state;
+    const { date, show, loggedIn } = this.state;
+    console.log("#AR: render -> loggedIn", loggedIn);
     return (
       <div>
         <div className="clock">
@@ -48,8 +50,12 @@ class App extends Component {
         </div>
         <Button variant="info" onClick={this.login}>login</Button>
         <Button variant="secondary" onClick={this.onChangeView}>switch</Button>
-        {show && <Company data={companysData} />}
-        {!show && <Cars data={cars} />}
+
+        <AppContext.Provider value={{ loggedIn }}>
+          {show && <Company data={companysData} />}
+          {!show && <Cars data={cars} />}
+        </AppContext.Provider> 
+        
       </div>
     );
   }
