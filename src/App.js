@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Home from './components/Home/Home'
 import Dashboard from './components/Dashboard/Dashboard';
 import { Badge } from 'react-bootstrap';
 import './App.css';
@@ -32,7 +33,7 @@ class App extends Component {
 
     setTimeout(() => {
       this.setState({show: false})
-    }, 3000)
+    }, 1000)
 
     setInterval(() => {
       this.setState({ date: new Date() })
@@ -49,6 +50,7 @@ class App extends Component {
           <Badge variant="info">{date.toLocaleTimeString()}</Badge>
         </div>
         {show && <Dashboard update={update}/>}
+        {!show && <Home />}
       </div>
     );
   }

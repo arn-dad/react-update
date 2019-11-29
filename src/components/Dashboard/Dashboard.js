@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import isEqual from 'lodash/isEqual';
 import Form from './Form';
-import Table from './Table';
+import Table from '../Table';
 
 import './dashboard.css';
 
@@ -17,9 +17,9 @@ import './dashboard.css';
 //     window.removeEventListener('resize',  this.onWindowResize)
 //   }
 
-const Dashboard = () => {
+const Dashboard = (props) => {
  const [state, setState ] = useState({
-      todos    : [],
+      todos    : props.todos || [],
       hide     : false
     });
 
