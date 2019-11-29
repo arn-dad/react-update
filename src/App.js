@@ -42,7 +42,6 @@ class App extends Component {
 
   render() {
     const { date, show, loggedIn } = this.state;
-    console.log("#AR: render -> loggedIn", loggedIn);
     return (
       <div>
         <div className="clock">
