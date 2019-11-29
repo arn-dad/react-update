@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Home from './components/Home/Home'
-import Dashboard from './components/Dashboard/Dashboard';
+import Cars from './components/Cars/Cars'
+import Company from './components/Company/Company';
 import { Badge, Button } from 'react-bootstrap';
+import { companysData, cars } from './store/store';
 import './App.css';
 
 /**
@@ -20,30 +21,22 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = { 
-      show: true,
-      date: new Date(),
-      update: false 
+      date   : new Date(),
+      update : false 
     }
   }
-
-  componentDidMount() {
-    // setTimeout(() => {
-    //   this.setState({ update: true })
-    // }, 0);
-
-    setTimeout(() => {
-      this.setState({show: false})
-    }, 3000)
-
-    setInterval(() => {
-      this.setState({ date: new Date() })
-    }, 1000)
-  }
-
   onChangeView = () => {
     this.setState(({ show }) => ({
       show: !show
     }))
+  }
+
+  login = () => {
+    setTimeout(() => {
+      this.setState({
+        loggedIn: true
+      })
+    }, 1500)
   }
 
   render() {
@@ -54,9 +47,10 @@ class App extends Component {
         <div className="clock">
           <Badge variant="info">{date.toLocaleTimeString()}</Badge>
         </div>
-        <Button variant="link" onClick={this.onChangeView}>Switch</Button>
-        {show && <Dashboard update={update}/>}
-        {!show && <Home />}
+        <Button variant="info" onClick={this.login}>login</Button>
+        <Button variant="secondary" onClick={this.onChangeView}>switch</Button>
+        {show && <Company data={companysData} />}
+        {!show && <Cars data={cars} />}
       </div>
     );
   }
