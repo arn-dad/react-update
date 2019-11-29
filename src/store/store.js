@@ -1,0 +1,1 @@
+export const todos = ['Buy tickets online', 'Pay bills', 'Play games']
