@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Home from './components/Home/Home'
-import Dashboard from './components/Dashboard/Dashboard';
-import { Badge } from 'react-bootstrap';
+import Home from './containers/Home'
+import Dashboard from './containers/Dashboard';
+import { Badge, Button } from 'react-bootstrap';
 import './App.css';
 
 /**
@@ -31,15 +31,20 @@ class App extends Component {
     //   this.setState({ update: true })
     // }, 0);
 
-    setTimeout(() => {
-      this.setState({show: false})
-    }, 1000)
+    // setTimeout(() => {
+    //   this.setState({show: false})
+    // }, 1000)
 
-    setInterval(() => {
-      this.setState({ date: new Date() })
-    }, 1000)
+    // setInterval(() => {
+    //   this.setState({ date: new Date() })
+    // }, 1000)
   }
 
+  onChangeView = () => {
+    this.setState(({ show }) => ({
+      show: !show
+    }))
+  }
 
   render() {
     const { date, update, show } = this.state;
@@ -49,6 +54,7 @@ class App extends Component {
         <div className="clock">
           <Badge variant="info">{date.toLocaleTimeString()}</Badge>
         </div>
+        <Button variant="link" onClick={this.onChangeView}>Switch</Button>
         {show && <Dashboard update={update}/>}
         {!show && <Home />}
       </div>
