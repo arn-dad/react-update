@@ -18,7 +18,6 @@ const FormInputs = (props) => {
     }))
   }
   
-    console.log("#AR: FormInputs -> inputRef", inputRef);
     const { email, password, checkout } = data;
     const { userID } = props;
     return (
