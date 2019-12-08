@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/react-update/static/css/main.3eb880e8.chunk.css",
+    "main.js": "/react-update/static/js/main.8fd41355.chunk.js",
+    "main.js.map": "/react-update/static/js/main.8fd41355.chunk.js.map",
+    "runtime-main.js": "/react-update/static/js/runtime-main.ea45aaee.js",
+    "runtime-main.js.map": "/react-update/static/js/runtime-main.ea45aaee.js.map",
+    "static/css/2.17e5ed98.chunk.css": "/react-update/static/css/2.17e5ed98.chunk.css",
+    "static/js/2.9b313086.chunk.js": "/react-update/static/js/2.9b313086.chunk.js",
+    "static/js/2.9b313086.chunk.js.map": "/react-update/static/js/2.9b313086.chunk.js.map",
+    "index.html": "/react-update/index.html",
+    "precache-manifest.8d72beae68f85887c2c3586654c792ac.js": "/react-update/precache-manifest.8d72beae68f85887c2c3586654c792ac.js",
+    "service-worker.js": "/react-update/service-worker.js",
+    "static/css/2.17e5ed98.chunk.css.map": "/react-update/static/css/2.17e5ed98.chunk.css.map",
+    "static/css/main.3eb880e8.chunk.css.map": "/react-update/static/css/main.3eb880e8.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ea45aaee.js",
+    "static/css/2.17e5ed98.chunk.css",
+    "static/js/2.9b313086.chunk.js",
+    "static/css/main.3eb880e8.chunk.css",
+    "static/js/main.8fd41355.chunk.js"
+  ]
+}
